@@ -7,11 +7,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<c:choose>
-    <c:when test="${cookie.style_prefere=='blanc'}">
-        <link href="CSS/style1.css" rel="stylesheet" type="text/css"/>
-    </c:when>
-    <c:otherwise>
-        <link href="CSS/style2.css" rel="stylesheet" type="text/css"/>
-    </c:otherwise>
-</c:choose>
+<link href="CSS/${cookie.style_prefere.getValue()}.css" rel="stylesheet" type="text/css"/>

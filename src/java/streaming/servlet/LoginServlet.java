@@ -33,9 +33,7 @@ public class LoginServlet extends HttpServlet {
         Utilisateur u = new UtilisateurService().rechercheParLoginEtMdp(login, mdp);
         
         // Je suis loggé correctement
-        resp.addCookie( new Cookie("login", login) );
-        resp.addCookie( new Cookie("mdp", mdp) );
-        resp.addCookie( new Cookie("util_type", u.getUtilType().toString()) );
+        req.getSession().setAttribute("utilConnecte", u);
         
         // Redirection vers ecran listage des films
         resp.sendRedirect("films_lister?connecte=vrai");

@@ -18,14 +18,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author tom
  */
-@WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "ChangeDeStyleServlet", urlPatterns = {"/change_style"})
+public class ChangeDeStyleServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.getSession().removeAttribute("utilConnecte");
+        String style = req.getParameter("style");
+        
+        resp.addCookie( new Cookie("style_prefere", style) );
         
         resp.sendRedirect("films_lister");
     }
+
+    
 }
